@@ -1,0 +1,32 @@
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: watchmaker
+  namespace: default
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: watchmaker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: watchmaker
+      labels:
+        app: watchmaker
+      namespace: default
+    spec:
+      containers:
+        - name: watchmaker
+          image: ipedrazas/watchmaker-api:9
+          imagePullPolicy: Always
+          ports:
+          - name: watch-api
+            containerPort: 5000
+      imagePullSecrets:
+        - name: watchmaker-token-9yjo3
+
