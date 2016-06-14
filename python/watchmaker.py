@@ -30,6 +30,12 @@ def watchmaker():
     return "watchmaker v0.9"
 
 
+@app.route('/health')
+def health():
+    """watchmaker."""
+    return "healthy"
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
