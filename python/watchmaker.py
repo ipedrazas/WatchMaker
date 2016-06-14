@@ -30,10 +30,16 @@ def watchmaker():
     return "watchmaker v0.9"
 
 
-@app.route('/health')
+@app.route('/liveness')
 def health():
     """watchmaker."""
-    return "healthy"
+    return "liveness"
+
+
+@app.route('/readiness')
+def readiness():
+    """watchmaker."""
+    return "readiness"
 
 
 if __name__ == '__main__':

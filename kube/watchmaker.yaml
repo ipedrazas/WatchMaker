@@ -25,6 +25,18 @@ spec:
         - name: watchmaker
           image: ipedrazas/watchmaker-api:9
           imagePullPolicy: Always
+          livenessProbe:
+              httpGet:
+                  path: /liveness
+                  port: 5000
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+         readinessProbe:
+            httpGet:
+                path: /readiness
+                port: 5000
+          initialDelaySeconds: 0
+          timeoutSeconds: 1
           ports:
           - name: watch-api
             containerPort: 5000
